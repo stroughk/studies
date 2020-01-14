@@ -1,0 +1,11 @@
+.img-coffee {
+    width: 300px;
+    filter: grayscale(80%);
+    opacity: 0.5;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 40px;
+   
+}
+

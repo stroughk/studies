@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://bootswatch.com/4/slate/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>My Programming Study List App</title>
+</head>
+<body>
+    <img class="img-coffee" src="coffee.jpg" alt="Coffee and Programming">
+    <div class="container mt-4">
+       <h1 class="display-3">My Programming Study Log</h1>
+         <form id="study-form">
+            <div class="form-group">
+                <label for="programming-language">Programming Language</label>
+                <input type="text" id="programming-language" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="topic">Topic</label>
+                <input type="text" id="topic" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="description">What did you understand? Describe briefly.</label>
+                <input type="text" id="description" class="form-control">
+            </div>
+            <input type="submit" value="Add Study" class="btn btn-primary btn-block">
+        </form>
+        <table class="table table-striped mt-5">
+            <thead>
+                <tr>
+                    <th>Programming Language</th>
+                    <th>Topic</th>
+                    <th>Description</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="study-list">
+            </tbody>
+        </table>
+    </div>
+<script src="app.js"></script>    
+</body>
+</html>
