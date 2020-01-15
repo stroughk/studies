@@ -29,7 +29,7 @@ class Display {
     }
     
     static addStudyToList(study) {
-        const list = document.querySelector('#study-list');
+        const studyList = document.querySelector('#study-list');
         const row = document.createElement('tr');
 
         row.innerHTML = `
@@ -39,7 +39,7 @@ class Display {
             <td><a href="#" class="btn btn-danger btn-sm delete">Delete</a></td>
         `;
 
-        list.appendChild(row);
+        studyList.appendChild(row);
     }
 }
 
