@@ -41,6 +41,16 @@ class Display {
 
         studyList.appendChild(row);
     }
+
+    //to clear the form
+    static clearForm() {
+        document.querySelector('#programming-language').value=''; 
+        document.querySelector('#topic').value=''; 
+        document.querySelector('#description').value=''; 
+    }
+
+
+
 }
 
 document.addEventListener('DOMContentLoaded', Display.displayStudies); //to display all studies 
@@ -59,4 +69,8 @@ document.querySelector('#study-form').addEventListener('submit', (e)=> {
     
     //to add it on the page 
     Display.addStudyToList(study);
+
+    Display.clearForm(); //calling the clear form static method
+  
+
 });
