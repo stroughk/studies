@@ -25,7 +25,7 @@ class Display {
         
         const studies = LoggedStudies;
 
-        studies.forEach((study) => Display.addStudyToList(study));
+        studies.forEach((study) => Display.addStudyToList(study)); //loop through the studies
     }
     
     static addStudyToList(study) {
@@ -43,4 +43,20 @@ class Display {
     }
 }
 
-document.addEventListener('DOMContentLoaded', Display.displayStudies);
+document.addEventListener('DOMContentLoaded', Display.displayStudies); //to display all studies 
+
+//to add a study
+document.querySelector('#study-form').addEventListener('submit', (e)=> {
+    //to prevent actual submit
+    e.preventDefault();
+    //to get the values from the form
+    const programming_language = document.querySelector('#programming-language').value; 
+    const topic = document.querySelector('#topic').value; 
+    const description = document.querySelector('#description').value; 
+
+    //to instantiate a new study
+    const study = new Study(programming_language, topic, description);
+    
+    //to add it on the page 
+    Display.addStudyToList(study);
+});
