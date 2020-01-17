@@ -47,7 +47,16 @@ class Display {
         }
     } 
 
-
+    static showAlert(message, className) {
+        const div = document.createElement('div');
+        div.className = `alert alert-${className}`;
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector('.container');
+        const form = document.querySelector('#study-form');
+        container.insertBefore(div, form);
+        //remove alert after 2 seconds
+        setTimeout(() => document.querySelector('.alert').remove(),2000);
+    }
 
     //to clear the form
     static clearForm() {
@@ -68,13 +77,18 @@ document.querySelector('#study-form').addEventListener('submit', (e)=> {
     const topic = document.querySelector('#topic').value; 
     const description = document.querySelector('#description').value; 
 
+    //to validate the form
+    if(programming_language ==='' || topic === '' || description === '') {
+        Display.showAlert('Please fill in all fields', 'danger');
+    } else {        
     //to instantiate a new study
     const study = new Study(programming_language, topic, description);
     
     //to add it on the page 
     Display.addStudyToList(study);
-
+    Display.showAlert('Study has been successfully added', 'success');
     Display.clearForm(); //calling the clear form static method
+    }
 });
 
 //to delete a study
