@@ -38,9 +38,16 @@ class Display {
             <td>${study.description}</td>
             <td><a href="#" class="btn btn-danger btn-sm delete">Delete</a></td>
         `;
-
         studyList.appendChild(row);
     }
+
+    static deleteStudy(el) {
+        if(el.classList.contains('delete')){
+            el.parentElement.parentElement.remove();
+        }
+    } 
+
+
 
     //to clear the form
     static clearForm() {
@@ -48,9 +55,6 @@ class Display {
         document.querySelector('#topic').value=''; 
         document.querySelector('#description').value=''; 
     }
-
-
-
 }
 
 document.addEventListener('DOMContentLoaded', Display.displayStudies); //to display all studies 
@@ -71,6 +75,9 @@ document.querySelector('#study-form').addEventListener('submit', (e)=> {
     Display.addStudyToList(study);
 
     Display.clearForm(); //calling the clear form static method
-  
-
 });
+
+//to delete a study
+document.querySelector('#study-list').addEventListener('click', (e)=> {
+    Display.deleteStudy(e.target)
+}); 
