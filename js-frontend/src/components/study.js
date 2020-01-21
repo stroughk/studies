@@ -6,3 +6,4 @@ class Study {
         this.description = studyJSON.description
     }
 }
+

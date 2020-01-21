@@ -2,22 +2,28 @@ class Studies {
   constructor() {
     this.studies = [];
     this.adapter = new StudiesAdapter();
-    //this.bindEventListeners()
+    this.initiBindingsAndEventListeners()
     this.fetchAndLoadStudies();
 
     this.deleteStudy = this.deleteStudy.bind(this);
     this.render = this.render.bind(this);
   }
 
+
+  initiBindingsAndEventListeners() {
+    this.studyForm = document.getElementById('study-form')
+    this.studyForm.addEventListener('submit', this.createStudy)    
+  }
+
+  createStudy(e) {
+    e.preventDefault() 
+    console.log('study is being created')
+  }
+
   fetchAndLoadStudies() {
     this.adapter
       .getStudies()
       .then(studies => {
-          /*
-        studies.forEach(study => {
-            this.studies.push(new Study(study))
-        });
-        */
         this.studies = studies.map(study => new Study(study));
       })
       .then(() => {
@@ -26,7 +32,7 @@ class Studies {
   }
 
   deleteStudy(id) {
-    console.log("got hereee", id);
+
   }
 
   render() {
