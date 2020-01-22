@@ -12,13 +12,26 @@ class Studies {
 
   initiBindingsAndEventListeners() {
     this.studyForm = document.getElementById('study-form')
-    this.studyForm.addEventListener('submit', this.createStudy)    
+    this.newProgrammingLanguage = document.getElementById('programming-language')
+    this.newTopic = document.getElementById('topic')
+    this.newDescription = document.getElementById('description')
+
+    this.studyForm.addEventListener('submit', this.createStudy.bind(this))    
   }
 
   createStudy(e) {
     e.preventDefault() 
-    console.log('study is being created')
-  }
+        
+    const programmingLanguageValue = this.newProgrammingLanguage.value
+    const topicValue = this.newTopic.value
+    const descriptionValue = this.newDescription.value
+   
+    this.adapter.createStudy(programmingLanguageValue);
+    this.adapter.createStudy(topicValue);
+    this.adapter.createStudy(descriptionValue);
+  
+    }
+   
 
   fetchAndLoadStudies() {
     this.adapter
