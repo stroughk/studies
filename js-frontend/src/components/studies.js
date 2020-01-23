@@ -21,15 +21,17 @@ class Studies {
 
   createStudy(e) {
     e.preventDefault() 
-        
-    const programmingLanguageValue = this.newProgrammingLanguage.value
-    const topicValue = this.newTopic.value
-    const descriptionValue = this.newDescription.value
-   
-    this.adapter.createStudy(programmingLanguageValue);
-    this.adapter.createStudy(topicValue);
-    this.adapter.createStudy(descriptionValue);
-  
+     const study = {
+            programming_language: this.newProgrammingLanguage.value,
+            topic: this.newTopic.value,
+            description:this.newDescription.value 
+        };
+    this.adapter.createStudy(study).then(data => {
+          this.studies.push(new Study(data))
+          this.render()
+          
+        })
+     
     }
    
 
