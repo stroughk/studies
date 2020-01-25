@@ -1,4 +1,4 @@
-class Api::V1::StudiesController < ApplicationController
+class Api::V1::StudiesController < ApplicationController   #namespace it in case there is a version 2
     
     before_action :set_study, only: [:edit, :update, :show, :destroy]
 
@@ -8,26 +8,17 @@ class Api::V1::StudiesController < ApplicationController
     end
 
     def show
-       render json: @study, status: 200
-    end
-
-    def new
-        @study = Study.new
+        render json: @study, status: 200
     end
 
     def edit
     end
 
     def create
-        @study = Study.create(study_params)
-
-        if @study.save
-            format.html { redirect_to @study, notice: "You successfully created a study log"}
-            format.json { render :show, status: created, location: @study }
-        else
-            format.html { render :new }
-            format.json { render json: @study.errors, status: unprocessable_entity}
-        end
+        @study = Study.create(study_params)   #needs validation .. if @study.save?
+    
+        render json: @study, status: 200
+ 
     end
 
     def update
