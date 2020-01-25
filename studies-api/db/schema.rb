@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_11_211721) do
+ActiveRecord::Schema.define(version: 2020_01_25_184432) do
+
+  create_table "objectives", force: :cascade do |t|
+    t.string "title"
+    t.boolean "done"
+    t.integer "study_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["study_id"], name: "index_objectives_on_study_id"
+  end
 
   create_table "studies", force: :cascade do |t|
     t.string "programming_language"
@@ -20,4 +29,5 @@ ActiveRecord::Schema.define(version: 2020_01_11_211721) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "objectives", "studies"
 end

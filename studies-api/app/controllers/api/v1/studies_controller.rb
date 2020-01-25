@@ -11,12 +11,15 @@ class Api::V1::StudiesController < ApplicationController   #namespace it in case
         render json: @study, status: 200
     end
 
-    def edit
+    def editMO
     end
 
     def create
-        @study = Study.create(study_params)   #needs validation .. if @study.save?
-    
+        @study = Study.create!(study_params)   #needs validation .. if @study.save?
+        objective_params.each do |objective|
+            puts objective
+            @study.objectives.create!(title:objective, done:false)
+        end
         render json: @study, status: 200
  
     end
@@ -36,6 +39,10 @@ class Api::V1::StudiesController < ApplicationController   #namespace it in case
     
     def study_params
         params.require(:study).permit(:programming_language, :topic, :description)
+    end
+
+    def objective_params
+        params[:objectives]
     end
 
     def set_study
