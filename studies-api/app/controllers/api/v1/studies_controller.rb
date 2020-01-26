@@ -30,7 +30,7 @@ class Api::V1::StudiesController < ApplicationController   #namespace it in case
     end
 
     def destroy
-        @study.delete
+        @study.destroy
 
         render json: {studyId: @study.id}
     end

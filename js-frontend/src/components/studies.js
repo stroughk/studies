@@ -44,38 +44,27 @@ class Studies {
             description:this.newDescription.value,
             objectives : this.objectives
         };
-
        
-          this.adapter.createStudy(study).then(res => {
-
-             
+          this.adapter.createStudy(study).then(res => {             
              let status = res.status
+      
              if (status==200){
                res.json().then(data=>{
-                this.objectives = []; // reset
+                   this.objectives = []; // reset
                    this.renderObjectives();
                    this.studies.push(new Study(data))
                    this.render()
+                   e.target.reset() // form reset/clear
                })
              }else{
                res.json().then(data=>{
                  alert(data.message)
                })
              }
-            // if(data.status == 200){
-            //   this.objectives = []; // reset
-            //   this.renderObjectives();
-            //   this.studies.push(new Study(data))
-            //   this.render()
-            // } else 
-            //   alert(data.message)
-            //}
-
-          
+               
+        }).catch(error => {
+          console.log(error);
         })
-          
-        
-     
     }
    
 
@@ -93,6 +82,7 @@ class Studies {
   deleteStudy(id) {
 
   }
+  
   renderObjectives(){
     const objList= document.getElementById('objectives-list')
     objList.innerHTML='';

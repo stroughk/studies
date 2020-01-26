@@ -19,7 +19,7 @@ class StudiesAdapter {
         body: JSON.stringify(studyObj)
     };
         return fetch(this.baseUrl, configObject)                //need to make a fetch request to our base URL
-        .then(function(res) { //
+        .then(function(res) { 
             return res
         
         })
