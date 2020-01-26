@@ -1,24 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This program was written by Kateryna Strough (Jan 2020)
+Github code: https://github.com/stroughk/studies
 
-Things you may want to cover:
+What this program does?
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This program consists of 2 parts:
+1. js-frontend that includes Javascript, HTML & CSS.
+    This makes a call to the studies-api database and appends the studies to the DOM
+2. studies-api that includes Ruby on Rails API
+    This holds the database where it stores the studies using sqlite
