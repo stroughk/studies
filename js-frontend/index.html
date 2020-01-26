@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/style.css">
     <title>My Programming Study List App</title>
 </head>
+
 <body>
     <img class="img-coffee" src="coffee.jpg" alt="Coffee and Programming">
     <div class="container mt-4">
@@ -25,21 +26,36 @@
                 <label for="description">What did you understand? Describe briefly.</label>
                 <input type="text" id="description" class="form-control">
             </div>
+            <div class="form-group">
+                <h2>Add Learning Objectives</h2>
+                <div id="objectives-list">
+                    <div>Objective 1</div>
+                </div>
+                <input type="text" id="objective-value">
+                <button id="add-objective">Add Objective</button>
+            </div>
             <input type="submit" value="Add Study" class="btn btn-primary btn-block">
         </form>
-        <table class="table table-striped mt-5">
-            <thead>
-                <tr>
-                    <th>Programming Language</th>
-                    <th>Topic</th>
-                    <th>Description</th>
-                    <th></th>
-                </tr>
-            </thead>
+
+            <table class="table table-striped mt-5">
+                <thead>
+                    <tr>
+                        <th>Programming Language</th>
+                        <th>Topic</th>
+                        <th>Description</th>
+                        <th></th>
+                    </tr>
+                </thead>
             <tbody id="study-list"></tbody>
-        </table>
+            </table>
+
     </div>
 
-<script src="app.js"></script>    
+
+<script type="text/javascript" src="src/components/study.js"></script> <!--order matters--> 
+<script src="src/components/studies.js"></script> 
+<script src="src/components/app.js"></script>    
+<script src="src/adapters/StudiesAdapter.js"></script>    
+<script src="src/index.js"></script>    
 </body>
 </html>
