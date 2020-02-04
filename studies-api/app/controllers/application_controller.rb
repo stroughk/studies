@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::API
-    include ExceptionHandler
+    include ExceptionHandler   #deploys custom error pages: 404 and 500+ errors
 end

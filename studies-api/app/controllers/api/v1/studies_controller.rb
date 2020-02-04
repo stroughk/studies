@@ -15,7 +15,7 @@ class Api::V1::StudiesController < ApplicationController   #namespace it in case
     end
 
     def create
-        @study = Study.create!(study_params)   #needs validation .. if @study.save?
+        @study = Study.create!(study_params)  
         objective_params.each do |objective|
             puts objective
             @study.objectives.create!(title:objective, done:false)

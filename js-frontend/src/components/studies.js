@@ -16,6 +16,7 @@ class Studies {
     this.newProgrammingLanguage = document.getElementById('programming-language')
     this.newTopic = document.getElementById('topic')
     this.newDescription = document.getElementById('description')
+    this.sortButton = document.getElementById('sort-by-topic')
 
     // add objectives features
     this.objectiveList = document.getElementById('objective-list');
@@ -23,7 +24,8 @@ class Studies {
     this.objectiveAddButton = document.getElementById('add-objective');
     this.objectiveAddButton.addEventListener('click', this.addObjective.bind(this));
 
-    this.studyForm.addEventListener('submit', this.createStudy.bind(this))    
+    this.studyForm.addEventListener('submit', this.createStudy.bind(this));  
+    this.sortButton.addEventListener('click', this.sortStudies.bind(this));  
   }
 
   addObjective(e){
@@ -83,6 +85,17 @@ class Studies {
 
   }
   
+  sortStudies() {
+    this.adapter
+    .getStudies()
+    .then(studies => {
+      this.studies = studies.sort((a,b) => a.topic > b.topic ? 1 : -1);
+    })
+    .then(() => {
+      this.render();
+    });
+  }
+
   renderObjectives(){
     const objList= document.getElementById('objectives-list')
     objList.innerHTML='';
@@ -96,7 +109,7 @@ class Studies {
   }
   render() {                                                    //after we receive all the studies from rails api, we render
     const studyList = document.querySelector("#study-list");    //find study-list from index.html and add it to a variable
-    studyList.innerHTML = '';                                   //append the sudy  list and append it to the DOM
+    studyList.innerHTML = '';                                   //append the study  list and append it to the DOM
     this.studies.forEach(study => {                             //since studies is an array, can itirate over each study and pushing it
       const row = document.createElement("tr");
       let objectives = "<ul>";
